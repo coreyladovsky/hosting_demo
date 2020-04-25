@@ -13,8 +13,15 @@ app.use(cors());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
+
 app.use('/cars', carsRouter);
 app.use('/users', usersRouter)
+
+app.get("/", (req, res) => {
+    res.json({
+        greeting: "hello world"
+    })
+})
 
 app.use((err, req, res, next) => {
     res.status(500).json({
